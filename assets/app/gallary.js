@@ -19,8 +19,9 @@ let lastSlide
 
 
 const clsSlider = document.getElementById('cls_slider');
-const prevSlide = document.getElementById('prev_slide');
-const nextSlide = document.getElementById('next_slide');
+const prevSlideBtn = document.getElementById('prev_slide');
+const playSlideBtn = document.getElementById('play_slide');
+const nextSlideBtn = document.getElementById('next_slide');
 const slider = document.getElementById('slider');
 const gallaryWrapper = document.getElementById('gallary_wrapper');
 const sliderWrapper = document.getElementById('sliders_wrapper');
@@ -31,6 +32,8 @@ let slideStep = 0,
     slideOffset = 0,
     slidesize;
 let cloneSlide
+let offset
+let play = false
 
 
 
@@ -43,10 +46,14 @@ GALLARY.forEach((item) => {
 })
 clsSlider.addEventListener('click', () => {
   slider.style.display = 'none'
-  slide.remove()
+  let removeSlades = document.querySelectorAll('.silde__img')
+  removeSlades.forEach((item)=>{
+    item.remove()
+  })
   slidesContainer.remove()
   slideOffset = 0
-  
+  offset = 0
+stopPlaing()
 })
 gallaryWrapper.innerHTML = gallaryHTML;
 
@@ -62,9 +69,6 @@ gallaryImages.forEach((item, index) => {
     slider.style.display = 'flex'
     slideCount = index
     createSlide(slideCount, slideOffset)
-//    console.log('slideCount - ' + slideCount)
-//    console.log('slideOffset - ' + slideOffset)
-    
   slidesContainer.append(slide)
   })
 })
@@ -78,11 +82,8 @@ const createSlide = (slideCount, slideOffset) => {
   slide.src = imgURL + GALLARY[slideCount].imgName
   slidesContainer.append(slide)
   
-//  console.log(slide.src)
 
 }
-//const playSlide()
-let offset
 const next = () => {
   if (slideCount >= GALLARY.length-1) {
   slideCount = 0
@@ -93,7 +94,6 @@ const next = () => {
   createSlide(slideCount, 1)
   
   cloneSlide = document.querySelectorAll('.silde__img')
-//  console.log(cloneSlide.length)
   setTimeout(() => {
   for (let i=0; i<=cloneSlide.length-1; i++){
 //  console.log('i = ' + i)
@@ -108,99 +108,64 @@ cloneSlide[0].addEventListener('transitionend',() => {cloneSlide[0].remove()})
 
 const prev = () => {
   if (slideCount <= 0) {
-  slideCount = GALLARY.length-1
-} else {
-  slideCount--
-}
+    slideCount = GALLARY.length - 1
+  } else {
+    slideCount--
+  }
   offset = 1;
   createSlide(slideCount, -1)
-  
+
   cloneSlide = document.querySelectorAll('.silde__img')
-//  console.log(cloneSlide.length)
   setTimeout(() => {
-  for (let i=0; i<=cloneSlide.length-1; i++){
-    cloneSlide[i].style.left = slidesize*offset+ 'px'
-     offset--
-    
-  console.log(slidesize*offset + slidesize)
-  }
-cloneSlide[0].addEventListener('transitionend',() => {
-  
-  cloneSlide[0].remove()})
-    
-  },0)
+    for (let i = 0; i <= cloneSlide.length - 1; i++) {
+      cloneSlide[i].style.left = slidesize * offset + 'px'
+      offset--
+    }
+    cloneSlide[0].addEventListener('transitionend', () => {
+      cloneSlide[0].remove()
+    })
+
+  }, 0)
 }
 
-//const next = () => {
-//    console.log('slideOffset - ' + slideOffset)
-//  
-//  
-//if (slideCount >= GALLARY.length-1) {
-//  slideCount = 0
-//} else {
-//  slideCount++
-//}
-//  slideOffset = 1
-//  createSlide(slideCount, slideOffset)
-//  slidesContainer.append(slide)
-//  
-//  cloneSlide = document.querySelectorAll('.silde__img')
-//   setTimeout(() => {
-//     
-//  for (i=0; i<cloneSlide.length; i++){
-//    cloneSlide[i].style.left = -slidesize*slideOffset +'px'
-//     slideOffset--
-////  console.log(slideOffset)
-//  }
-//       cloneSlide[0].addEventListener('transitionend',() => {cloneSlide[0].remove()})
-//   }, 1)
-//
-//}
-
-//const prev = () => {
-//  if (slideCount <= 0) {
-//  slideCount = GALLARY.length-1
-//} else {
-//  slideCount--
-//}
-//  
-//  slideOffset = -1
-//  
-//  createSlide(slideCount, slideOffset)
-//  slidesContainer.append(slide)
-//  
-//  cloneSlide = document.querySelectorAll('.silde__img')
-//   setTimeout(() => {
-//     
-//  for (i=0; i<cloneSlide.length; i++){
-//    cloneSlide[i].style.left = -slidesize*slideOffset +'px'
-//     slideOffset++
-//  console.log(slideOffset)
-//  }
-//       cloneSlide[0].addEventListener('transitionend',() => {cloneSlide[0].remove()})
-//   }, 1)
-//
-//  
-//  
-////  createSlide(slideCount, slideOffset)
-//
-//  slidesContainer.prepend(slide)
-//  
-//  
-//}
 
 
 
+let autoPlay
+
+playSlideBtn.addEventListener('click', () => {
+  if(!play){
+  startPlaing()
+  } else {
+  stopPlaing()
+    
+  }
+  
+  })
+  
+  
+
+let startPlaing = () => {
+  playSlideBtn.classList.add('stop')
+    next()
+    autoPlay = setInterval((next), 2000)
+    play = true
+    nextSlideBtn.disabled = true
+    prevSlideBtn.disabled = true
+    
+}
+
+let stopPlaing = () =>{
+  clearInterval(autoPlay)
+    play = false
+    nextSlideBtn.disabled = false
+    prevSlideBtn.disabled = false
+  playSlideBtn.classList.remove('stop')
+}
 
 
-
-
-
-
-
-
-nextSlide.addEventListener('click', next)
-prevSlide.addEventListener('click', prev)
+nextSlideBtn.addEventListener('click', next)
+prevSlideBtn.addEventListener('click', prev)
 
 
 
