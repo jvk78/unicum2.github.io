@@ -1,0 +1,240 @@
+//main: ../style.less
+@media (max-width: 414px){
+  .home__img{
+    width: 100%;
+  }
+  .home__logo {
+   width: 80%;
+  }
+  .home__icon {
+    width: 25px;
+    height: 25px;
+  }
+  .programm__content {
+    margin-top: 0;
+  }
+  .programm__content_disc {
+    display: none;
+    border-bottom: 1px solid @mainColor ;
+    
+  }
+  .programm__items_logo {
+//    display: none;
+    width: 30px;
+    height: 30px;
+  }
+  .programm__items{
+    margin-bottom: 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .programm__items_title {
+    cursor: pointer;
+    flex: 1 1 auto;
+    width: 100%;
+//    padding: .5em 0;
+    
+    //  border-top: 1px solid @mainColor;
+//      border-bottom: none;
+    &::after {
+      position: absolute;
+      font-family: 'Iconset';
+      content: '\e900';
+      right: .5em
+    }
+  }
+  }
+
+
+// iPad Pro
+@media (max-width: 1366px) and (min-height: 1024px) and (orientation: landscape)  {
+  .container {
+    max-width: 1250px;
+  }
+  .home__logo {
+    width:100%;
+  }
+  .home__text {
+    font-size: 24px;
+  }
+  .home__img {
+      width: 100%;
+  }
+}
+
+// iPad
+@media (min-width: 768px) and (max-height: 1366px) and (orientation: portrait)  {
+  .home__text {
+    font-size: 24px;
+  }
+  .home__img {
+      width: 80%;
+  }
+}
+
+//iPhone Max
+@media (min-width: 375px) and (max-height: 896px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2){
+  .home__text {
+    font-size: 16px;
+  }
+}
+@media (max-width: 896px) and (min-height: 375px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2){
+  .home__logo {
+    width:85%;
+  }
+  .home__text {
+    margin: 20px 0 20px 15px;
+    font-size: 18px;
+    & p:not(:last-child) {
+      margin-bottom: 5px;
+    }
+  }
+  .home__icons {
+    margin: 0 0 15px 15px;
+  }
+  .home__icon {
+    width: 25px;
+    height: 25px;
+  }
+  .home__img {
+    & img {
+      width: 80%;
+    }
+  }
+}
+@media (max-width: 900px) and (min-height: 280px) and(orientation: landscape) and (-webkit-min-device-pixel-ratio: 2){
+  .sliders__wrapper {
+    height: 90vh;
+    width: 135vh;
+//    border: 1px solid #5992a7;
+    
+  }
+  .slaider__action {
+//  margin: 10px 0;
+    
+  }
+}
+
+//iPhone X
+@media (max-width: 812px) and (min-height: 375px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2){
+  .home__text {
+    font-size: 16px;
+  }
+  
+}
+
+//GLX Note5
+@media (min-width: 480px) and (max-height: 854px) and (orientation: portrait) {
+  .home__logo {
+    width:85%;
+  }
+  .home__text {
+    font-size: 16px;
+  }
+  .home__img {
+      width: 100%;
+    & img {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 854px) and (min-height: 480px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2){
+  .home__text {
+    font-size: 16px;
+    
+  }
+}
+//iPhohe Plus
+@media (max-width: 736px) and (min-height: 414px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  .home__logo {
+    width: 100%;
+  }
+  .home__text {
+    flex: none;
+  }
+}
+
+
+//Other Mobile
+@media (min-width: 280px) and (max-height: 736px) and (orientation: portrait) {
+  .home__text {
+    margin: 20px 0;
+    font-size: 14px;
+    & p:not(:last-child) {
+    }
+  }
+  .home__icons {
+    margin: 0 0 20px;
+  }
+  .home__icon {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 736px) and (min-height: 280px) and (orientation: landscape) {
+  .home__img {
+    & img {
+      width: 100%;
+    }
+  }
+  .home__text {
+    font-size: 16px;
+    margin: 15px 0 15px 15px;
+    
+  }
+  .home_disc {
+    width: 40%;
+  }
+  .home__icons {
+    margin: 0 0 20px 15px;
+  }
+  .home__icon {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+
+//iPhone 5
+@media (max-width: 653px) and (min-height: 280px) and (orientation: landscape) {
+  .home__logo {
+    width:80%;
+  }
+  .home__text {
+    font-size: 14px;
+    & p:not(:last-child) {
+    }
+  }
+}
+
+@media (min-width: 280px) and (max-height: 653px) and (orientation: portrait) {
+  .home__logo {
+    width:60%;
+  }
+  .home__text {
+    font-size: 14px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+//main: ../style.less
+.list__show {
+  transform: scale(1);
+  transition: transform .3s ease;
+
+}
+.show__item {
+  display: block;
+  transform: scale(1);
+  padding-bottom: 5px;
+//  height: 100px;
+}
+.activ__nav {
+//  transition: color 3s ease;
+  color: rgba(#fff, .7)
+}
+
+.stop::before {
+  content: '\e907';
+}
+.select::after {
+  content: '\e901';
+}
+
+.radio__active {
+  font-weight: 700;
+  color: #fff;
+}
+
+.play__activ {
+  cursor: pointer;
+}
+
+.volume__activ {
+  &:before {
+    content: '\e906'
+  }
+}
+.scale{
+  transform: scale(1.2) translateX(-50%);
+}

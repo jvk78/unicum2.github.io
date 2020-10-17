@@ -1,0 +1,61 @@
+//main: ../style.less
+.programm {
+//  display: flex;
+//  flex-direction: column;
+//  align-items: center;
+////  padding:70px 0;
+//  min-height: 100vh;
+  background: url('../img/programm/program_bg.jpg') bottom right no-repeat;
+  background-size:cover;
+  }
+.desktop .programm, .all .programm {
+  background-attachment: fixed;
+}
+
+_programm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;}
+.programm__content {
+  font-size: 10px;
+//  .adaptive-font(10,2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: 400px;
+  flex: 1 1 auto;
+}
+
+.programm__items_logo {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+
+.programm__items {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.programm__items_title {
+  flex:auto;
+  padding: .3em 0;
+  border-top: 1px solid @mainColor;
+  border-bottom: 1px solid @mainColor;
+  text-transform: uppercase;
+  color: @mainColor;
+  font-weight: 400;
+  line-height: 1;
+  .adaptive-font(24, 14)
+}
+.programm__content_disc {
+  font-size: 14px;
+  color: @mainColorGr;
+}

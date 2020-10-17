@@ -1,0 +1,107 @@
+//main: ../style.less
+.teachers {
+//   padding:70px 0;
+//  min-height: 100vh;
+  background: url('../img/programm/program_bg.jpg') bottom right no-repeat;
+  background-size:cover;
+  }
+.desktop .teachers, .all .teachers {
+  background-attachment: fixed;
+}
+.teachers__content {
+  position: relative;
+//  justify-self: center;
+//  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+//  border: 1px solid #000;
+//  flex:0 1 50%;
+//  max-width: 200px;
+  width: 25%;
+  height: auto;
+  min-width: 190px;
+//  margin: 5px;
+  padding: 15px;
+  &:after{
+    content: '';
+    position: absolute;
+    width: 90%;
+    height: 1px;
+    bottom: 0;
+    background-color: @mainColor;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 90%;
+    right: 0;
+    background-color: @mainColor;
+  }
+  &:nth-child(4):before {
+    width: 0;
+    
+  }
+  &:last-child:before {
+    width: 0 !important;
+    
+  }
+}
+
+.teachers__images {
+  width: 90%;
+//  height: auto;
+//  border: 1px solid #000;
+  margin-bottom: 5px;
+  & img {
+    width: 100%;
+  }
+}
+.teachers__items {
+//  position: relative;
+  text-transform: uppercase;
+  font-size: 18px;
+  line-height: 1.2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+//  border: 1px solid #000;
+}
+.teachers__items_surname {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.teachers__items_jobtitle {
+  text-transform: none;
+  font-size: 14px;
+  color: @mainColorGr;
+  margin-bottom: 10px;
+  
+}
+.teachers__items_social {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: auto;
+}
+.desktop .social__icon svg:hover {
+  fill: @mainColorD;
+  transform: scale(1.2);
+}
+
+.social__icon {
+  & svg {
+    transition: .3s;
+    cursor: pointer;
+  }
+  display: block;
+  width: 25px;
+  height: 25px;
+  &:not(:last-child){
+    margin-right: 10px;
+  }
+//  border: 1px solid #000;
+}
