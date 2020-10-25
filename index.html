@@ -51,7 +51,7 @@
           </div>
           <div class="volume__range_container" id="range_container">
             <div class="volume__off" id="volume_on_off"></div>
-            <input class="volume__range" type="range" id="volume_range" min="0" max="1" step="0.01" value="0">
+            <input class="input__range" type="range" id="volume_range" min="0" max="1" step="0.01" value="0">
             <div class="volume__value" id="volume_value">000</div>
           </div>
           <form class="radio__list" id="radio_navigation">
@@ -469,52 +469,49 @@
   
 <div class="gallery__slider" id="slider">
   <div class="sliders__wrapper" id="sliders_wrapper">
-       <div class="slaider__action">
-         <div id="cls_slider"></div>
-         <button id="next_slide"></button>
-         <button class="play__slide" id="play_slide"></button>
-         <button id="prev_slide"></button>
-       </div>
-<!--
-       <div class="slides__container">
-    <img src="assets/img/gallery/001.jpg" class="silde__img">
-    <img src="assets/img/gallery/002.jpg" class="silde__img">
-         
-       </div>
--->
-       
+    <div class="slaider__action">
+      <div id="cls_slider"></div>
+      <div class="btn__container">
+        <button id="prev_slide"></button>
+        <button class="play__slide" id="play_slide"></button>
+        <button id="next_slide"></button>
+      </div>
+    </div>
   </div>
 </div>
-<!--<div class="slides__container" id="slides_container">-->
-    
+
+<div class="video" id="video">
+  <div class="video__wrapper">
+    <div class="video__content">
+      <video src="assets/video/crazyFrog.mp4" class="video__player" id="videoPlayer" poster=""></video>
+    </div >
+      <div class="video__timer">
+      <div class="timer" id="timePassed">00:00</div>
+    <input type="range" class="input__range video__progress" id="videoProgress" min="0" max="100" step="0.1" value="0">
+      <div class="timer" id="timeTotal">00:00</div>
+      </div>
+    <div class="video__action">
+      <div class="video__buttons">
+        <button class="video-btn" id="prevBtn">prev</button>
+        <button class="video-btn" id="backwardBtn">back</button>
+        <button class="video-btn" id="playPauseBtn">play</button>
+        <button class="video-btn" id="stopBtn">stop</button>
+        <button class="video-btn" id="forwardBtn">forw</button>
+        <button class="video-btn" id="nextBtn">next</button>
+        <button class="video-btn" id="fullScreenBtn">[/]</button>
+      </div>
+      <div class="video_track" id="videoTrack">Crazy Frog – Alex F</div>
 <!--
-    <div class="sildes__img">
-    <img src="assets/img/gallery/011.jpg" class="silde__img">
+      <div class="video_volume">
+        <div class="volume-icn">=</div>
+        <input type="range" class="input__range" min="0" max="1" step="0.01" value="0">
+      </div>
+-->
+      
     </div>
-    <div class="sildes__img"><img src="assets/img/gallery/001.jpg" class="silde__img"></div>
--->
-    
-    
-<!--
- <img class="silde__img" src="assets/img/gallery/012.jpg" alt="" >
- <img class="silde__img" src="assets/img/gallery/002.jpg" alt="" >
--->
-    
-    
-<!--    </div>  -->
-    
-<!--
-  <div class="slaider__action">
-    <button id="first_slide"></button>
-    <button id="prev_slide"></button>
-    <button id="play_slide"></button>
-    <button id="next_slide"></button>
-    <button id="last_slide"></button>
-    
   </div>
--->
-  
-  
+</div>
+
 </main>
 <footer class="footer"></footer>
 
@@ -523,6 +520,7 @@
 <script src="assets/app/app.js"></script>
 <script src="assets/app/smoothscroll.js"></script>
 <script src="assets/app/gallary.js"></script>
+<script src="assets/app/video.js"></script>
 </body>
 </html>
 

@@ -318,7 +318,7 @@ width: 24px;
   color: rgba(#fff, .5);
   letter-spacing: 1px;
 }
-.volume__range {
+.input__range, .video__range {
   overflow: hidden;
   -webkit-appearance: none;
   flex: 1 1 auto;
@@ -329,7 +329,7 @@ width: 24px;
   cursor: pointer;
 }
 
-.volume__range::-webkit-slider-thumb {
+.input__range::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 10px;
   height: 10px;
@@ -337,7 +337,7 @@ width: 24px;
   box-shadow: 150px 0 0 150px @mainColorLD;
 }
 
-.volume__range::-moz-range-thumb {
+.input__range::-moz-range-thumb {
   -moz-appearance: none;
   width: 10px;
   height: 10px;
@@ -347,7 +347,7 @@ width: 24px;
   box-shadow: 150px 0 0 150px @mainColorLD;
 }
 
-.volume__range::-moz-range-track {
+.input__range::-moz-range-track {
   -moz-appearance: none;
   flex: 1 1 auto;
   margin: 0 10px;
@@ -357,7 +357,7 @@ width: 24px;
   
 }
 
-.volume__range::-ms-thumb {
+.input__range::-ms-thumb {
   -ms-appearance: none;
   width: 10px;
   height: 10px;
@@ -366,11 +366,11 @@ width: 24px;
   background-color: #fff;
 }
 
-  .volume__range::-ms-fill-lower {
+  .input__range::-ms-fill-lower {
     background-color: @mainColorLD; //left
   }
 
-  .volume__range::-ms-fill-upper {
+  .input__range::-ms-fill-upper {
     background-color: rgba(#fff, .5); //right
   }
 

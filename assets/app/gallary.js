@@ -1,21 +1,19 @@
 let imgURL= 'assets/img/gallery/'
 const GALLARY = [
-  {imgName: '012.jpg', id: 01},
-  {imgName: '002.jpg', id: 02},
-  {imgName: '003.jpg', id: 03},
-  {imgName: '004.jpg', id: 04},
-  {imgName: '005.jpg', id: 05},
-  {imgName: '006.jpg', id: 06},
-  {imgName: '007.jpg', id: 07},
-  {imgName: '008.jpg', id: 08},
-  {imgName: '009.jpg', id: 09},
-  {imgName: '010.jpg', id: 10},
+  {imgName: '012.jpg', class: 'gallary__images', content: 'gallary__image'},
+  {imgName: '002.jpg', class: 'gallary__images', content: 'gallary__image'},
+  {imgName: 'crazyFrog.jpg', class: 'gallary__videos', content: 'gallary__video'},
+  {imgName: '003.jpg', class: 'gallary__images', content: 'gallary__image'},
+  {imgName: '004.jpg', class: 'gallary__images', content: 'gallary__image'},
+  {imgName: '005.jpg', class: 'gallary__images', content: 'gallary__image'},
+  {imgName: '006.jpg', class: 'gallary__images', content: 'gallary__image'},
+  {imgName: 'Iliketomoveit.jpg', class: 'gallary__videos', content: 'gallary__video'},
+  {imgName: '007.jpg', class: 'gallary__images', content: 'gallary__image'},
+  {imgName: '008.jpg', class: 'gallary__images', content: 'gallary__image'},
+  {imgName: '009.jpg', class: 'gallary__images', content: 'gallary__image'},
+  {imgName: '010.jpg', class: 'gallary__images', content: 'gallary__image'},
 ];
 
-let gallaryHTML = '';
-let sliderHTML = '';
-let slideLenght = GALLARY.length;
-let lastSlide
 
 
 const clsSlider = document.getElementById('cls_slider');
@@ -25,22 +23,27 @@ const nextSlideBtn = document.getElementById('next_slide');
 const slider = document.getElementById('slider');
 const gallaryWrapper = document.getElementById('gallary_wrapper');
 const sliderWrapper = document.getElementById('sliders_wrapper');
-//const slidesContainer = document.getElementById('slides_container');
-//const sliderContainer = document.getElementById('slides_container');
 
-let slideStep = 0,
+let slidesContainer = document.createElement('div');
+slidesContainer.classList.add('slides__container');
+let gallaryHTML = '',
+    sliderHTML = '',
+    slideLenght = GALLARY.length,
     slideOffset = 0,
-    slidesize;
-let cloneSlide
-let offset
-let play = false
+    play = false,
+    slidesize,
+    cloneSlide,
+    slideCount,
+    offset,
+    autoPlay;
+
 
 
 
 GALLARY.forEach((item) => {
   gallaryHTML += `
-  <div class="gallary__images">
-    <img class="gallary__image" src="${imgURL + item.imgName}" alt="${item.imgName}">
+  <div class="${item.class}">
+    <img class="${item.content}" src="${imgURL + item.imgName}" alt="${item.imgName}">
   </div>
 `
 })
@@ -58,11 +61,8 @@ stopPlaing()
 gallaryWrapper.innerHTML = gallaryHTML;
 
 const gallaryImages = document.querySelectorAll('.gallary__images')
+const images = document.querySelectorAll('.gallary__image')
 
-let slidesContainer = document.createElement('div');
-slidesContainer.classList.add('slides__container');
-
-let slideCount
 gallaryImages.forEach((item, index) => {
   item.addEventListener('click', () => {
     sliderWrapper.append(slidesContainer)
@@ -79,83 +79,79 @@ const createSlide = (slideCount, slideOffset) => {
   slide = document.createElement('img');
   slide.classList.add('silde__img');
   slide.style.left = slidesize*slideOffset + 'px';
-  slide.src = imgURL + GALLARY[slideCount].imgName
+  slide.src = images[slideCount].src
   slidesContainer.append(slide)
-  
+  console.log(slideCount)
 
 }
-const next = () => {
-  if (slideCount >= GALLARY.length-1) {
-  slideCount = 0
-} else {
-  slideCount++
-}
+async function next() {
+  if (slideCount >= images.length - 1) {
+    slideCount = 0
+  } else {
+    slideCount++
+  }
   offset = 0;
   createSlide(slideCount, 1)
-  
   cloneSlide = document.querySelectorAll('.silde__img')
   setTimeout(() => {
-  for (let i=0; i<=cloneSlide.length-1; i++){
-//  console.log('i = ' + i)
-    cloneSlide[i].style.left = slidesize*offset - slidesize +'px'
-     offset++
-    
-  }
-cloneSlide[0].addEventListener('transitionend',() => {cloneSlide[0].remove()})
-    
-  },0)
+    for (let i = 0; i <= cloneSlide.length - 1; i++) {
+      //  console.log('i = ' + i)
+      cloneSlide[i].style.left = slidesize * offset - slidesize + 'px'
+      offset++
+    }
+    nextSlideBtn.disabled = true
+    prevSlideBtn.disabled = true
+    cloneSlide[0].addEventListener('transitionend', () => {
+      cloneSlide[0].remove()
+      if (!play) {
+        nextSlideBtn.disabled = false
+        prevSlideBtn.disabled = false
+      }
+    })
+
+  }, 0)
 }
 
 const prev = () => {
   if (slideCount <= 0) {
-    slideCount = GALLARY.length - 1
+    slideCount = images.length - 1
   } else {
     slideCount--
   }
   offset = 1;
   createSlide(slideCount, -1)
-
   cloneSlide = document.querySelectorAll('.silde__img')
   setTimeout(() => {
     for (let i = 0; i <= cloneSlide.length - 1; i++) {
       cloneSlide[i].style.left = slidesize * offset + 'px'
       offset--
     }
+    nextSlideBtn.disabled = true
+    prevSlideBtn.disabled = true
     cloneSlide[0].addEventListener('transitionend', () => {
       cloneSlide[0].remove()
+      nextSlideBtn.disabled = false
+      prevSlideBtn.disabled = false
     })
-
   }, 0)
 }
 
 
 
 
-let autoPlay
+playSlideBtn.addEventListener('click', () => !play ? startPlaing() : stopPlaing())
 
-playSlideBtn.addEventListener('click', () => {
-  if(!play){
-  startPlaing()
-  } else {
-  stopPlaing()
-    
-  }
-  
-  })
-  
-  
-
-let startPlaing = () => {
+const startPlaing = () => {
   playSlideBtn.classList.add('stop')
     next()
-    autoPlay = setInterval((next), 2000)
-    play = true
     nextSlideBtn.disabled = true
     prevSlideBtn.disabled = true
+    autoPlay = setInterval((next), 2000)
+    play = true
     
 }
 
-let stopPlaing = () =>{
+const stopPlaing = () =>{
   clearInterval(autoPlay)
     play = false
     nextSlideBtn.disabled = false
