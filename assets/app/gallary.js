@@ -55,7 +55,7 @@ gallaryImages.forEach(function (item, index) {
 
 var createSlide = function createSlide(slideCount, slideOffset) {
   slidesize = sliderWrapper.getBoundingClientRect().width;
-  slide = document.createElement('img');
+  var slide = document.createElement('img');
   slide.classList.add('silde__img');
   slide.style.left = slidesize * slideOffset + 'px';
   slide.src = images[slideCount].src;
