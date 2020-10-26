@@ -6,6 +6,7 @@ var sectionTitles = document.querySelector('.section__titles');
 var sectionTitle = document.querySelectorAll('.section__title');
 var sectionAnchors = document.querySelectorAll('a[href^="#"]');
 var headerHeight = void 0;
+var sectionTitleHeight = void 0;
 var sectionID = void 0;
 var sectionPosition = void 0;
 var scrollPosition = void 0;
