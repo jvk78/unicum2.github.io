@@ -22,7 +22,8 @@ var gallaryHTML = '',
     cloneSlide = void 0,
     slideCount = void 0,
     offset = void 0,
-    autoPlay = void 0;
+    autoPlay = void 0,
+    slide = void 0;
 
 GALLARY.forEach(function (item) {
   gallaryHTML += '\n  <div class="' + item.class + '">\n    <img class="' + item.content + '" src="' + (imgURL + item.imgName) + '" alt="' + item.imgName + '">\n  </div>\n';
@@ -55,7 +56,7 @@ gallaryImages.forEach(function (item, index) {
 
 var createSlide = function createSlide(slideCount, slideOffset) {
   slidesize = sliderWrapper.getBoundingClientRect().width;
-  var slide = document.createElement('img');
+  slide = document.createElement('img');
   slide.classList.add('silde__img');
   slide.style.left = slidesize * slideOffset + 'px';
   slide.src = images[slideCount].src;
