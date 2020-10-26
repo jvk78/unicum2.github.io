@@ -42,7 +42,7 @@ function chsngeTitle() {
   });
 
   sectionTitleWrapper.style.top = -sectionTitleHeight * activeTitle + 'px';
-  for (i = 0; i < sectionAnchors.length; i++) {
+  for (var i = 0; i < sectionAnchors.length; i++) {
     sectionAnchors[i].classList.remove('activ__nav');
   }
   sectionAnchors[activeSection].classList.add('activ__nav');
