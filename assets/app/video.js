@@ -134,6 +134,8 @@ function toogleFullsreen() {
       videoWrapper.mozRequestFullScreen();
     } else if (videoWrapper.webkitRequestFullscreen) {
       videoWrapper.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+    } else if (videoWrapper.webkitEnterFullscreen) {
+       videoWrapper.webkitEnterFullscreen(); //for iphone this code worked
     }
     fullScreenBtn.classList.add('exit__fullscreen');
   } else {
