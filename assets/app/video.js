@@ -25,6 +25,8 @@ var duration = void 0,
     updateInterval = void 0,
     delayInterval = void 0,
     updateDelay = void 0,
+    delay = void 0,
+    update = void 0,
     addNull = void 0,
     value = void 0;
 
